@@ -2,11 +2,11 @@ from sqlalchemy.engine.url import URL
 from sqlalchemy import *
 from sqlalchemy_utils import database_exists, create_database
 
-postgres_db = {'drivername': 'michael',
-               'username': 'michael',
-               'password': 'michael',
-               'host': '98.180.146.141',
-               'port': '62572'}
+postgres_db = {'drivername': 'YOUR_DRIVERNAME',
+               'username': 'YOUR_USERNAME',
+               'password': 'YOUR_PASSWORD',
+               'host': 'YOUR_HOST',
+               'port': 'YOUR_PORT'}
 
 # print(URL(**postgres_db))
 

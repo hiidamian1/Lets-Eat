@@ -10,9 +10,9 @@ html {
 }
 
 .app-root {
-  height: 100vh;
   text-align: center;
   background-color: #d32323;
+  padding: 2rem;
 }
 
 .app-header {
@@ -27,7 +27,42 @@ html {
   font-size: 2.5rem;
 }
 
+.search-button {
+  margin: 5rem 0rem;
+  padding: 1rem 4rem;
+  font-size: 2rem;
+}
 
+.result-root {
+  width: 50vw;
+  /*height: calc(100vh - 4rem);*/
+  margin: auto;
+  padding: 2rem;
+}
+
+.result-img-container {
+  margin: auto;
+}
+
+.result-img {
+  height: 20vw;
+  width: auto;
+}
+
+.result-restaurant-name {
+  font-size: 5rem;
+  text-decoration: none;
+  color: black;
+}
+
+.result-restaurant-name:hover {
+  color:black
+}
+
+.result-stars {
+  font-size: 2rem;
+  color: yellow;
+}
 
 /*.App {
   text-align: center;

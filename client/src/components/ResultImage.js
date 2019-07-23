@@ -20,7 +20,7 @@ class ResultImage extends React.Component {
                   </button>
                 </div>
                 <div className="modal-body">
-                  <img src={this.props.image} className="result-img" alt=""/>
+                  <img src={this.props.image} className="result-img-modal" alt=""/>
                 </div>
               </div>
             </div>

@@ -25,13 +25,15 @@ class App extends React.Component {
     console.log(this.state.restaurant);
 
     return (
-      <div className="app-root">
-        <div className="app-header">
-          <h1 className="app-title">Let's Eat!</h1>
-          <h3 className="app-description">Can't decide where? Let us choose for you.</h3>
+      <div className="app-root container-fluid">
+        <div className="app-content col-md-9 col-lg-6">
+          <div className="app-header">
+            <h1 className="app-title">Let's Eat!</h1>
+            <h3 className="app-description">Can't decide where? Let us choose for you.</h3>
+          </div>
+          <Search findRestaurant={this.findRestaurant}/>
+          {this.state.restaurant.id && <Result restaurant={this.state.restaurant}/>}
         </div>
-        <Search findRestaurant={this.findRestaurant}/>
-        {this.state.restaurant.id && <Result restaurant={this.state.restaurant}/>}
       </div>
     );
   }

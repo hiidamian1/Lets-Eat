@@ -12,8 +12,12 @@ html {
 .app-root {
   text-align: center;
   background-color: #d32323;
-  padding: 2rem;
   min-height: 100vh;
+}
+
+.app-content {
+  margin: auto;
+  padding: 2rem;
 }
 
 .app-header {
@@ -21,7 +25,13 @@ html {
 }
 
 .app-title {
-  font-size: 15rem;
+  font-size: 12.5rem;
+}
+
+@media(min-width: 992px) {
+  .app-title {
+    font-size: 15rem;
+  }
 }
 
 .app-description {
@@ -31,14 +41,18 @@ html {
 .search-button {
   margin: 5rem 0rem;
   padding: 1rem 4rem;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .result-root {
-  width: 50vw;
-  /*height: calc(100vh - 4rem);*/
   margin: auto;
-  padding: 2rem;
+  padding: 1rem;
+}
+
+@media(min-width: 992px) {
+  .result-root {
+    padding: 2rem;
+  }
 }
 
 .result-img-container {
@@ -46,12 +60,31 @@ html {
 }
 
 .result-img {
-  height: 20vw;
-  width: auto;
+  height: 40vw;
+  max-width: 100%;
+}
+
+.result-img-modal {
+  height: 60vw;
+  max-width: 100%;
+}
+
+button.close {
+  font-size: 2rem;
+}
+
+@media(min-width: 576px) {
+  .result-img {
+    height: 20vw;
+  }
+
+  .result-img-modal {
+    height: 30vw;
+  }
 }
 
 .result-restaurant-name {
-  font-size: 5rem;
+  font-size: 2.5rem;
   text-decoration: none;
   color: black;
 }
@@ -61,16 +94,23 @@ html {
 }
 
 .result-stars {
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: yellow;
 }
 
 .result-price {
-  font-size: 2rem;
+  font-size: 1.75rem;
 }
 
 .result-address {
   color: black;
+  font-size: 1.75rem;
+}
+
+@media(min-width: 992px) {
+  .result-restaurant-name {
+    font-size: 5rem;
+  }
 }
 
 /*.App {

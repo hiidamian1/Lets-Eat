@@ -22,6 +22,8 @@ class App extends React.Component {
   render() {
     this.findRestaurant = this.findRestaurant.bind(this);
 
+    console.log(this.state.restaurant);
+
     return (
       <div className="app-root">
         <div className="app-header">
@@ -29,7 +31,7 @@ class App extends React.Component {
           <h3 className="app-description">Can't decide where? Let us choose for you.</h3>
         </div>
         <Search findRestaurant={this.findRestaurant}/>
-        <Result restaurant={this.state.restaurant}/>
+        {this.state.restaurant.id && <Result restaurant={this.state.restaurant}/>}
       </div>
     );
   }

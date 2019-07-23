@@ -13,6 +13,7 @@ html {
   text-align: center;
   background-color: #d32323;
   padding: 2rem;
+  min-height: 100vh;
 }
 
 .app-header {
@@ -62,6 +63,14 @@ html {
 .result-stars {
   font-size: 2rem;
   color: yellow;
+}
+
+.result-price {
+  font-size: 2rem;
+}
+
+.result-address {
+  color: black;
 }
 
 /*.App {

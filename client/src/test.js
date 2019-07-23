@@ -29,7 +29,7 @@ const test = [
     'transactions':[
       'restaurant_reservation'
     ],
-    'price':'$$',
+    'price':'$$$$',
     'location':{
       'address1':'69 N San Pedro St',
       'address2':'',

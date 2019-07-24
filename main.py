@@ -1,9 +1,12 @@
+from flask import Flask, jsonify
 import requests
 import random
 
+app = Flask(__name__)
 
+choice = ''
 def restaurant(type, area):
-    API_KEY = 'API_KEY'
+    API_KEY = 'APIKEYHERE'
     ENDPOINT = 'https://api.yelp.com/v3/businesses/search'
     HEADERS = {'Authorization': 'bearer %s' % API_KEY}
     contenders = []
@@ -18,22 +21,25 @@ def restaurant(type, area):
     business_data = response.json()
 
     for bfz in business_data['businesses']:
-        if bfz['is_closed'] == False:
+        if not bfz['is_closed']:
             contenders.append(bfz)
-            #print(bfz)
+            print(bfz)
 
     choice = random.choice(contenders)
     address = ''
     for add in choice['location']['display_address']:
         address += add + ' '
-    print('You should try %s! This has a rating of %d stars. The phone number of this restaurant is %s and is located on %s'
+    print('You should try %s! This has a rating of %d!. The phone number of this restaurant is %s and is located on %s'
           % (choice['name'], choice['rating'], choice['display_phone'], address))
 
 
-def main():
-    type = input('Enter the type of restaurant you are looking for: ')
-    area = input('Enter the location of interest: ')
-    restaurant(type, area)
+@app.route('/getRestaurant', methods=['GET'])
+def getRestaurant():
+    return jsonify({'choice': choice})
 
 
-main()
+if __name__ == "__main__":
+    app.run(debug=True)
+
+
+

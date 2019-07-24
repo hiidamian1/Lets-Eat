@@ -4,8 +4,10 @@ import random
 
 app = Flask(__name__)
 
-choice = ''
-def restaurant(type, area):
+
+@app.route('/getRestaurant', methods=['GET'])
+def getRestaurant(area, type):
+
     API_KEY = 'APIKEYHERE'
     ENDPOINT = 'https://api.yelp.com/v3/businesses/search'
     HEADERS = {'Authorization': 'bearer %s' % API_KEY}
@@ -32,9 +34,6 @@ def restaurant(type, area):
     print('You should try %s! This has a rating of %d!. The phone number of this restaurant is %s and is located on %s'
           % (choice['name'], choice['rating'], choice['display_phone'], address))
 
-
-@app.route('/getRestaurant', methods=['GET'])
-def getRestaurant():
     return jsonify({'choice': choice})
 
 

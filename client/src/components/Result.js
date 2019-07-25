@@ -64,6 +64,8 @@ class Result extends React.Component {
             <a href={directions} className="result-address" target="_blank">
               {address}
             </a>
+
+            {this.props.userLocation.latitude && <div>{this.props.userLocation.latitude + " " + this.props.userLocation.longitude}</div>}
           </div>
         </div>
       </div>

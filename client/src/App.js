@@ -4,25 +4,59 @@ import test from "./test";
 
 import Search from "./components/Search";
 import Result from "./components/Result";
+import LocationAlert from "./components/LocationAlert";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      restaurant: {}
+      result: {},
+      userLocationStatus: -1,
+      userDetectedCoords: false, // will be truthy if user is geolocated
+      userManualLocation: false // will be truthy if user manually enters location
     }
   }
 
   findRestaurant(e) {
     e.preventDefault();
 
-    this.setState({restaurant: test[Math.floor(Math.random() * test.length)]});
+    this.setState({result: test[Math.floor(Math.random() * test.length)]});
+  }
+
+  handleLocation(e) {
+    e.preventDefault();
+
+    if (navigator.geolocation) {
+
+      function success(position) {
+        console.log("Position found!"); //alert or flash message
+
+        this.setState({userLocationStatus: 1, userDetectedCoords: position.coords});
+      }
+
+      success = success.bind(this);
+
+      function error() {
+        this.setState({userLocationStatus: 0, userDetectedCoords: {}});
+
+        console.log("Could not locate position"); //alert or flash message
+      }
+
+      error = error.bind(this);
+
+      const options = {
+        timeout: 5000,
+      };
+
+      navigator.geolocation.getCurrentPosition(success, error, options);
+    } else {
+      console.log("could not access location")
+    }
   }
 
   render() {
     this.findRestaurant = this.findRestaurant.bind(this);
-
-    console.log(this.state.restaurant);
+    this.handleLocation = this.handleLocation.bind(this);
 
     return (
       <div className="app-root container-fluid">
@@ -31,8 +65,11 @@ class App extends React.Component {
             <h1 className="app-title">Let's Eat!</h1>
             <h3 className="app-description">Can't decide where? Let us choose for you.</h3>
           </div>
-          <Search findRestaurant={this.findRestaurant}/>
-          {this.state.restaurant.id && <Result restaurant={this.state.restaurant}/>}
+          <Search findRestaurant={this.findRestaurant} handleLocation={this.handleLocation}/>
+
+          {this.state.userLocationStatus > -1 && <LocationAlert status={this.state.userLocationStatus}/>}
+
+          {this.state.result.id && <Result result={this.state.result} userDetectedCoords={this.state.userDetectedCoords} userManualLocation={this.state.userManualLocation}/>}
         </div>
       </div>
     );

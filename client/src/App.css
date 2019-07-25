@@ -103,6 +103,10 @@ button.close {
   color: yellow;
 }
 
+.result-review-count {
+  font-size: 1.5rem;
+}
+
 .result-price {
   font-size: 1.75rem;
 }

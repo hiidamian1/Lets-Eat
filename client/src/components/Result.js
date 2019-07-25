@@ -21,6 +21,8 @@ class Result extends React.Component {
       stars.push("No rating information available :(");
     }
 
+    const reviews = this.props.restaurant.review_count;
+
     let price = [];
 
     if (this.props.restaurant.price) {
@@ -43,7 +45,9 @@ class Result extends React.Component {
       address = "No location information available :(";
     }
 
-    let directions = `https://www.google.com/maps/search/?api=1&query=${this.props.restaurant.coordinates.latitude},${this.props.restaurant.coordinates.longitude}`;
+    const distance = this.props.restaurant.distance / 1609.344;
+
+    const directions = `https://www.google.com/maps/search/?api=1&query=${this.props.restaurant.coordinates.latitude},${this.props.restaurant.coordinates.longitude}`;
 
     return (
       <div className="card result-root">
@@ -54,18 +58,20 @@ class Result extends React.Component {
               {this.props.restaurant.name}
             </a>
 
-            <div className="result-stars">
-              {stars}
+            <div className="result-ratings-container">
+              <span className="result-stars"> {stars} </span> 
+              <span className="result-review-count"> {` (${reviews} reviews)`} </span>
             </div>
+
             <div className="result-price">
               {price}
             </div>
-            
+
             <a href={directions} className="result-address" target="_blank">
-              {address}
+            {`${distance.toPrecision(2)} miles away`}
+
             </a>
 
-            {this.props.userLocation.latitude && <div>{this.props.userLocation.latitude + " " + this.props.userLocation.longitude}</div>}
           </div>
         </div>
       </div>

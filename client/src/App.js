@@ -69,7 +69,7 @@ class App extends React.Component {
 
           {this.state.userLocationStatus > -1 && <LocationAlert status={this.state.userLocationStatus}/>}
 
-          {this.state.result.id && <Result result={this.state.result} userDetectedCoords={this.state.userDetectedCoords} userManualLocation={this.state.userManualLocation}/>}
+          {this.state.result.id && <Result restaurant={this.state.result} userDetectedCoords={this.state.userDetectedCoords} userManualLocation={this.state.userManualLocation}/>}
         </div>
       </div>
     );

@@ -13,7 +13,10 @@ class App extends React.Component {
       result: {},
       userLocationStatus: -1,
       userDetectedCoords: false, // will be truthy if user is geolocated
-      userManualLocation: false // will be truthy if user manually enters location
+      userManualLocation: false, // will be truthy if user manually enters location
+      searchTerms: "",
+      radius: 0, // possible values 5, 15, 25. otherwise do not include
+      price: 0 // possible values 1, 2, 3, 4. otherwise do not include
     }
   }
 
@@ -65,10 +68,10 @@ class App extends React.Component {
             <h1 className="app-title">Let's Eat!</h1>
             <h3 className="app-description">Can't decide where? Let us choose for you.</h3>
           </div>
-          <Search findRestaurant={this.findRestaurant} handleLocation={this.handleLocation}/>
-
+          
           {this.state.userLocationStatus > -1 && <LocationAlert status={this.state.userLocationStatus}/>}
 
+          <Search findRestaurant={this.findRestaurant} handleLocation={this.handleLocation}/>
           {this.state.result.id && <Result restaurant={this.state.result} userDetectedCoords={this.state.userDetectedCoords} userManualLocation={this.state.userManualLocation}/>}
         </div>
       </div>
